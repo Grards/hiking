@@ -2,7 +2,7 @@
 
     <h2 class="text-center text-2xl mt-10 mb-10">Create a new hiking</h2>
 
-    <form class="flex flex-col w-96 mx-auto p-4 bg-rose-500 text-rose-50 rounded-lg" method="POST" action="../backend/add_hiking.php">
+    <form class="flex flex-col w-96 mx-auto p-4 bg-rose-500 text-rose-50 rounded-lg" method="POST" action="../backend/add.php">
         <label for="name">name :</label>
         <input type="text" name="name" id="name" class="p-2 text-neutral-950">
 

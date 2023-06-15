@@ -4,9 +4,9 @@
 
     $name = $_POST[htmlentities('name')];
     $difficulty = $_POST[htmlentities('difficulty')];
-    $distance = filter_var($_POST[htmlentities('distance')], FILTER_SANITIZE_NUMBER_INT);
+    $distance = intval(filter_var($_POST[htmlentities('distance')], FILTER_SANITIZE_NUMBER_INT));
     $duration = $_POST[htmlentities('duration')];
-    $height_difference = filter_var($_POST[htmlentities('height_difference')], FILTER_SANITIZE_NUMBER_INT);
+    $height_difference = intval(filter_var($_POST[htmlentities('height_difference')], FILTER_SANITIZE_NUMBER_INT));
 
     $sql = "INSERT IGNORE INTO hiking (name, difficulty, distance, duration, height_difference) VALUES (?,?,?,?,?)";
     $query= $pdo->prepare($sql);
