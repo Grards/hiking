@@ -2,15 +2,16 @@
     require "connection.php"; 
     $pdo = connection();
 
-    $name = $_POST['name'];
-    $difficulty = $_POST['difficulty'];
-    $distance = $_POST['distance'];
-    $duration = $_POST['duration'];
-    $height_difference = $_POST['height_difference'];
+    $name = $_POST[htmlentities('name')];
+    $difficulty = $_POST[htmlentities('difficulty')];
+    $distance = filter_var($_POST[htmlentities('distance')], FILTER_SANITIZE_NUMBER_INT);
+    $duration = $_POST[htmlentities('duration')];
+    $height_difference = filter_var($_POST[htmlentities('height_difference')], FILTER_SANITIZE_NUMBER_INT);
 
     $sql = "INSERT IGNORE INTO hiking (name, difficulty, distance, duration, height_difference) VALUES (?,?,?,?,?)";
-    $stmt= $pdo->prepare($sql);
-    $stmt->execute([$name, $difficulty, $distance, $duration, $height_difference]);
+    $query= $pdo->prepare($sql);
+    $query->execute([$name, $difficulty, $distance, $duration, $height_difference]);
 
-    header('Location: /hiking/index.php');
+    $lastid = filter_var(htmlentities($pdo->lastInsertId()), FILTER_SANITIZE_NUMBER_INT);
+    header('Location: /hiking/index.php?add='.$lastid);
 ?>
