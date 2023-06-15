@@ -1,4 +1,4 @@
-<?php require "./assets/views/partials/header.php"; ?>
+<?php require "./views/partials/header.php"; ?>
 <?php require "./backend/connection.php"; ?>
 <?php $datas = connection(); ?>
 
@@ -10,4 +10,4 @@
 ?>
 
     
-<?php require "./assets/views/partials/footer.php"; ?>
+<?php require "./views/partials/footer.php"; ?>

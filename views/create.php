@@ -2,7 +2,7 @@
 
     <h2>Create a new hiking</h2>
 
-    <form method="POST" action="../../backend/add_hiking.php">
+    <form method="POST" action="../backend/add_hiking.php">
         <label for="name">name :</label>
         <input type="text" name="name" id="name">
 
