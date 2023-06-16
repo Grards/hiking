@@ -9,6 +9,7 @@ export function fading(element){
            element.style.opacity = opacity;
         }
         if (opacity === 0){
+            element.style.display = "none";
             clearInterval(fade);
         }
         

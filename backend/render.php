@@ -13,29 +13,28 @@
             echo '<p class="error">' . $error . '</p>';
         }else{
             foreach($datas as $data) {
-                // echo    $data->id == $hikingAdded ? '<section class="border-solid border-4 border-emerald-500 bg-slate-300 rounded-lg relative w-auto relative"> <p class="absolute bottom-0 w-full text-center bg-emerald-500">New hiking !</p>' : '<section class="bg-slate-300 rounded-lg relative w-auto">';
                 if($data->available == 'yes'){
                     if($data->id == $hikingAdded){
-                        echo '<section class="border-solid border-4 border-emerald-500 bg-slate-300 rounded-lg relative w-auto relative"> <p class="absolute bottom-0 w-full text-center bg-emerald-500">New hiking !</p>';
+                        echo '<section class="border-solid border-4 border-emerald-500 bg-slate-300 rounded-lg relative max-w-sm relative"> <p class="absolute bottom-0 w-full text-center bg-emerald-500">New hiking !</p>';
                     }elseif($data->id == $hikingUpdated){
-                        echo '<section class="border-solid border-4 border-amber-400 bg-slate-300 rounded-lg relative w-auto relative"> <p class="absolute bottom-0 w-full text-center bg-amber-400">Hiking updated !</p>';
+                        echo '<section class="border-solid border-4 border-amber-400 bg-slate-300 rounded-lg relative max-w-sm relative"> <p class="absolute bottom-0 w-full text-center bg-amber-400">Hiking updated !</p>';
                     }
                     else{
-                        echo '<section class="bg-slate-300 rounded-lg relative w-auto">';
+                        echo '<section class="bg-slate-300 rounded-lg relative max-w-sm">';
                     } 
                 }else{
                     if($data->id == $hikingAdded){
-                        echo '<section class="opacity-60 border-solid border-4 border-emerald-500 bg-slate-300 rounded-lg relative w-auto relative"> <p class="absolute bottom-0 w-full text-center bg-emerald-500">New hiking !</p>';
+                        echo '<section class="opacity-60 border-solid border-4 border-emerald-500 bg-slate-300 rounded-lg relative max-w-sm relative"> <p class="absolute bottom-0 w-full text-center bg-emerald-500">New hiking !</p>';
                     }elseif($data->id == $hikingUpdated){
-                        echo '<section class="opacity-60 border-solid border-4 border-amber-400 bg-slate-300 rounded-lg relative w-auto relative"> <p class="absolute bottom-0 w-full text-center bg-amber-400">Hiking updated !</p>';
+                        echo '<section class="opacity-60 border-solid border-4 border-amber-400 bg-slate-300 rounded-lg relative max-w-sm relative"> <p class="absolute bottom-0 w-full text-center bg-amber-400">Hiking updated !</p>';
                     }
                     
                     else{
-                        echo '<section class="opacity-60 bg-slate-300 rounded-lg relative w-auto">';
+                        echo '<section class="opacity-60 bg-slate-300 rounded-lg relative max-w-sm">';
                     } 
                 }
 
-                echo        '<h2 class="text-center text-lg font-medium">' . htmlentities($data->name) . '</h2>' .
+                echo        '<h2 class="text-center text-lg font-medium max-w-full">' . htmlentities($data->name) . '</h2>' .
                             '<img class="w-96" src="/hiking/assets/img/hiking-default.JPG" alt="Picture of the ' . htmlentities($data->name) . ' hiking">' .
                             '<ul class="mb-5 p-4">' . 
                                 '<li> Difficulty : ' . htmlentities($data->difficulty) . '</li>' . 
