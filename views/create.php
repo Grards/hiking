@@ -18,7 +18,10 @@
         <label for="height_difference">height difference :</label>
         <input type="number" name="height_difference" id="height_difference" class="p-2 text-neutral-950">
 
-        <input type="submit" value="Submit">
+        <label for="available">available :</label>
+        <input type="checkbox" name="available" id="available" class="text-neutral-950 self-start" checked>
+
+        <input type="submit" value="Submit" class="mt-10">
     </form>
     
 <?php require "./partials/footer.php" ?>

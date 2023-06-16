@@ -2,6 +2,7 @@
     require "connection.php"; 
     $pdo = connection();
 
+    $id = intval(filter_var($_POST[htmlentities('id')], FILTER_SANITIZE_NUMBER_INT));
     $name = $_POST[htmlentities('name')];
     $difficulty = $_POST[htmlentities('difficulty')];
     $distance = intval(filter_var($_POST[htmlentities('distance')], FILTER_SANITIZE_NUMBER_INT));
@@ -14,10 +15,11 @@
         $available = 'no';
     }
 
-    $sql = "INSERT IGNORE INTO hiking (name, difficulty, distance, duration, height_difference, available) VALUES (?,?,?,?,?,?)";
+    $sql = "UPDATE hiking 
+            SET name=?, difficulty=?, distance=?, duration=?, height_difference=?, available=?
+            WHERE id=?";
     $query= $pdo->prepare($sql);
-    $query->execute([$name, $difficulty, $distance, $duration, $height_difference, $available]);
+    $query->execute([$name, $difficulty, $distance, $duration, $height_difference, $available, $id]);
 
-    $lastid = filter_var(htmlentities($pdo->lastInsertId()), FILTER_SANITIZE_NUMBER_INT);
-    header('Location: /hiking/index.php?add='.$lastid);
+    header('Location: /hiking/index.php?up='.$id);
 ?>
