@@ -4,7 +4,7 @@
 
     $name = $_POST[htmlentities('name')];
     $difficulty = $_POST[htmlentities('difficulty')];
-    $distance = intval(filter_var($_POST[htmlentities('distance')], FILTER_SANITIZE_NUMBER_INT));
+    $distance = filter_var($_POST[htmlentities('distance')], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
     $duration = $_POST[htmlentities('duration')];
     $height_difference = intval(filter_var($_POST[htmlentities('height_difference')], FILTER_SANITIZE_NUMBER_INT));
 

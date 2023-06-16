@@ -39,7 +39,7 @@
                             '<img class="w-96" src="/hiking/assets/img/hiking-default.JPG" alt="Picture of the ' . htmlentities($data->name) . ' hiking">' .
                             '<ul class="mb-5 p-4">' . 
                                 '<li> Difficulty : ' . htmlentities($data->difficulty) . '</li>' . 
-                                '<li> Distance : ' . htmlentities($data->distance) . ' m</li>' . 
+                                '<li> Distance : ' . substr(htmlentities($data->distance), 0, 5) . ' Km</li>' . 
                                 '<li> Duration : ' . htmlentities($data->duration) . ' m</li>' . 
                                 '<li> Height difference : ' . htmlentities($data->height_difference) . ' m</li>' .
                                 '<li> Available : ' . $data->available . '</li>' .
@@ -81,13 +81,18 @@
                     <input type="hidden" name="id" value="<?php echo htmlentities($data->id); ?>" required>
 
                     <label for="name">name :</label>
-                    <input type="text" name="name" id="name" class="p-2 text-neutral-950" value="<?php echo htmlentities($data->name); ?>"  required>
+                    <input type="text" name="name" id="name" class="p-2 text-neutral-950" value="<?php echo htmlentities($data->name); ?>"  maxlength="255" minlength="3" required>
 
                     <label for="difficulty">difficulty :</label>
-                    <input type="text" name="difficulty" id="difficulty" class="p-2 text-neutral-950" value="<?php echo htmlentities($data->difficulty); ?>" required>
+                    <select name="difficulty" id="difficulty" class="p-2 text-neutral-950" required>
+                        <option value="easy" <?php echo $data->difficulty == "easy" ? "selected='selected'" : "" ?> >Easy</option>
+                        <option value="medium" <?php echo $data->difficulty == "medium" ? "selected='selected'" : "" ?> >Medium</option>
+                        <option value="hard" <?php echo $data->difficulty == "hard" ? "selected='selected'" : "" ?> >Hard</option>
+                        <option value="dangerous" <?php echo $data->difficulty == "dangerous" ? "selected='selected'" : "" ?> >Dangerous!</option>
+                    </select>
 
                     <label for="distance">distance :</label>
-                    <input type="number" name="distance" id="distance" min="0" class="p-2 text-neutral-950" value="<?php echo htmlentities($data->distance); ?>" required>
+                    <input type="number" name="distance" id="distance" min="0" class="p-2 text-neutral-950" value="<?php echo htmlentities($data->distance); ?>"  min="0" step="0.1" required>
 
                     <label for="duration">duration :</label>
                     <input type="time" name="duration" id="duration" class="p-2 pl-10 text-neutral-950 text-center" value="<?php echo htmlentities(substr($data->duration, 0, 5)); ?>" required>
